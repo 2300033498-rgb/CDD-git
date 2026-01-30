@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/2300033498-rgb/CDD-git.git'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                sh 'javac AddTwoNumbers.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'java AddTwoNumbers'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+    }
+}
