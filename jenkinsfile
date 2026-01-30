@@ -4,18 +4,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/2300033498-rgb/CDD-git.git'
+                // Checkout the code from GitHub
+                git branch: 'main', url: 'https://github.com/2300033498-rgb/CDD-git.git'
             }
         }
 
         stage('Compile') {
             steps {
+                // Compile the Java program
                 sh 'javac AddTwoNumbers.java'
             }
         }
 
         stage('Run') {
             steps {
+                // Run the Java program
                 sh 'java AddTwoNumbers'
             }
         }
@@ -23,7 +26,7 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline finished.'
+            echo 'Pipeline finished!'
         }
     }
 }
